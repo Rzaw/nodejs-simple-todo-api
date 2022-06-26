@@ -5,7 +5,7 @@ const verifyToken = (req, res, next) => {
     const token = req.body.token || req.query.token || req.headers["x-access-token"] || req.headers["authorization"].split(' ')[1];
 
     if (!token) {
-        return res.status(403).send("Unauthentificated, please login");
+        return res.status(403).json({ "error": "Unauthentificated, please login" });
     }
 
     try {
@@ -13,7 +13,7 @@ const verifyToken = (req, res, next) => {
         req.user = decoded;
     } catch (err) {
         console.error(err);
-        return res.status(401).send("Invalid token");
+        return res.status(401).json({ "error": "Invalid token" });
     }
 
     return next();
