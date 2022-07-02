@@ -3,6 +3,24 @@ const express = require('express');
 let router = express.Router();
 
 const User = require('../model/user');
+router.put('/changePassword', async (req, res) => {
+    // TODO: Check if user exists
+
+    // TODO: Check if password matches with old password
+
+    // TODO: Check if token is correct (to prevent unauthorized access from different users)
+
+    // TODO: Update password
+});
+
+router.put('/', async (req, res) => {
+    // TODO: Check if user exists
+
+    // TODO: Check if token is correct (to prevent unauthorized access from different users)
+
+    // TODO: Update password
+});
+
 router.post('/register', async (req, res) => {
     try {
         const { first_name, last_name, email, password } = req.body;
